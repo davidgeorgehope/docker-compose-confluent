@@ -1,0 +1,26 @@
+---
+version: '2'
+services:
+
+  zookeeper-1:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 22181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+      ZOOKEEPER_SERVERS: ${IP-ADDRESS-1}:22888:23888;${IP-ADDRESS-1}:32888:33888;${IP-ADDRESS-2}:22888:23888;${IP-ADDRESS-3}:22888:23888;${IP-ADDRESS-3}:32888:33888
+    network_mode: host
+
+  zookeeper-2:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_SERVER_ID: 2
+      ZOOKEEPER_CLIENT_PORT: 32181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+      ZOOKEEPER_SERVERS: ${IP-ADDRESS-1}:22888:23888;${IP-ADDRESS-1}:32888:33888;${IP-ADDRESS-2}:22888:23888;${IP-ADDRESS-3}:22888:23888;${IP-ADDRESS-3}:32888:33888
+    network_mode: host
+
