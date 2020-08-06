@@ -58,8 +58,7 @@ services:
       # Amount of heap to use for internal caches. Increase for better throughput
       CONTROL_CENTER_STREAMS_CACHE_MAX_BYTES_BUFFERING: 100000000
       CONTROL_CENTER_STREAMS_CONSUMER_REQUEST_TIMEOUT_MS: "960032"
-      CONTROL_CENTER_STREAMS_NUM_STREAM_THREADS: 1
-
+      CONTROL_CENTER_REPLICATION_FACTOR: 3
       
       # HTTP to Control Center UI 
       CONTROL_CENTER_REST_LISTENERS: http://0.0.0.0:9021
