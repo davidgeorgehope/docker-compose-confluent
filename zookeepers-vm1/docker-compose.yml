@@ -22,19 +22,12 @@ services:
       ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
       ZOOKEEPER_SSL_QUORUM: 'true'
-      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
-      ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
-      ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
-      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
-      ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
-      ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS      
       ZOOKEEPER_SSL_QUORUM_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
       ZOOKEEPER_SSL_QUORUM_KEYSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_QUORUM_KEYSTORE_TYPE: PKCS12
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_TYPE: JKS
-      ZOOKEEPER_AUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
     network_mode: host
 
   zookeeper-2:
@@ -42,7 +35,7 @@ services:
     volumes:
      - ${LOCAL_CERTS_LOCATION}:/etc/kafka/secrets
     environment:
-      ZOOKEEPER_CLIENT_PORT: 32181 
+      ZOOKEEPER_CLIENT_PORT: 32181
       ZOOKEEPER_SERVER_ID: 2
       ZOOKEEPER_SECURE_CLIENT_PORT: 32182
       ZOOKEEPER_TICK_TIME: 2000
@@ -57,17 +50,10 @@ services:
       ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS
       ZOOKEEPER_SSL_QUORUM: 'true'
-      ZOOKEEPER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
-      ZOOKEEPER_SSL_KEYSTORE_PASSWORD: confluent
-      ZOOKEEPER_SSL_KEYSTORE_TYPE: PKCS12
-      ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
-      ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: confluent
-      ZOOKEEPER_SSL_TRUSTSTORE_TYPE: JKS      
       ZOOKEEPER_SSL_QUORUM_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
       ZOOKEEPER_SSL_QUORUM_KEYSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_QUORUM_KEYSTORE_TYPE: PKCS12
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_TYPE: JKS
-      ZOOKEEPER_AUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
     network_mode: host
