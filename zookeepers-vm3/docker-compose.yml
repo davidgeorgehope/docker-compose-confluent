@@ -34,6 +34,7 @@ services:
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_3}.truststore.jks
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_TYPE: JKS
+      ZOOKEEPER_AUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider    
     network_mode: host
 
   zookeeper-2:
@@ -68,4 +69,5 @@ services:
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_3}.truststore.jks
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_PASSWORD: confluent
       ZOOKEEPER_SSL_QUORUM_TRUSTSTORE_TYPE: JKS
+      ZOOKEEPER_AUTH_PROVIDER_X509: org.apache.zookeeper.server.auth.X509AuthenticationProvider     
     network_mode: host
