@@ -7,7 +7,7 @@ services:
     volumes:
      - ${LOCAL_CERTS_LOCATION}:/etc/kafka/secrets
     environment:
-      KAFKA_BROKER_ID: 1
+      KAFKA_BROKER_ID: 5
       KAFKA_ZOOKEEPER_CONNECT:   ${HOST_NAME_3}:22182
       KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
       KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SSL
@@ -54,7 +54,7 @@ services:
     volumes:
      - ${LOCAL_CERTS_LOCATION}:/etc/kafka/secrets
     environment:
-      KAFKA_BROKER_ID: 1
+      KAFKA_BROKER_ID: 6
       KAFKA_ZOOKEEPER_CONNECT: ${HOST_NAME_3}:22182
       KAFKA_ZOOKEEPER_SSL_CLIENT_ENABLE: 'true'
       KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SSL
