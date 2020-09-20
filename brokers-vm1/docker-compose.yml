@@ -113,11 +113,11 @@ services:
       # general settings
       CONTROL_CENTER_BOOTSTRAP_SERVERS: ${HOST_NAME_1}:19093,${HOST_NAME_1}:29093,${HOST_NAME_2}:19093,${HOST_NAME_2}:29093,${HOST_NAME_3}:19093,${HOST_NAME_3}:29093,${HOST_NAME_4}:19093,${HOST_NAME_4}:29093
       
-      SSL_KEYSTORE_FILENAME: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
-      SSL_KEYSTORE_CREDENTIALS: /etc/kafka/secrets/${HOST_NAME_1}_keystore_creds
-      SSL_KEY_CREDENTIALS: /etc/kafka/secrets/${HOST_NAME_1}_sslkey_creds
-      SSL_TRUSTSTORE_FILENAME: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
-      SSL_TRUSTSTORE_CREDENTIALS: /etc/kafka/secrets/${HOST_NAME_1}_truststore_creds  
+      SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
+      SSL_KEYSTORE_PASSWORD: confluent
+      SSL_KEY_PASSWORD: confluent
+      SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
+      SSL_TRUSTSTORE_PASSWORD: confluent
       SECURITY_PROTOCOL: SSL      
      
       # Amount of heap to use for internal caches. Increase for better throughput
