@@ -129,7 +129,7 @@ services:
       # Amount of heap to use for internal caches. Increase for better throughput
 
       CONTROL_CENTER_STREAMS_NUM_STREAM_THREADS: 1
-
+      CONTROL_CENTER_STREAMS_SECURITY_PROTOCOL: SSL
       CONTROL_CENTER_STREAMS_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
       CONTROL_CENTER_STREAMS_SSL_TRUSTSTORE_PASSWORD: confluent
       CONTROL_CENTER_STREAMS_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
