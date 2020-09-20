@@ -113,7 +113,13 @@ services:
       # general settings
       CONTROL_CENTER_BOOTSTRAP_SERVERS: ${HOST_NAME_1}:19093,${HOST_NAME_1}:29093,${HOST_NAME_2}:19093,${HOST_NAME_2}:29093,${HOST_NAME_3}:19093,${HOST_NAME_3}:29093,${HOST_NAME_4}:19093,${HOST_NAME_4}:29093
       
-
+      CONTROL_CENTER_SSL_KEYSTORE_FILENAME: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
+      CONTROL_CENTER_SSL_KEYSTORE_CREDENTIALS: /etc/kafka/secrets/${HOST_NAME_1}_keystore_creds
+      CONTROL_CENTER_SSL_KEY_CREDENTIALS: /etc/kafka/secrets/${HOST_NAME_1}_sslkey_creds
+      CONTROL_CENTER_SSL_TRUSTSTORE_FILENAME: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
+      CONTROL_CENTER_SSL_TRUSTSTORE_CREDENTIALS: /etc/kafka/secrets/${HOST_NAME_1}_truststore_creds  
+      CONTROL_CENTER_SECURITY_PROTOCOL: SSL      
+     
       # Amount of heap to use for internal caches. Increase for better throughput
       CONTROL_CENTER_STREAMS_CACHE_MAX_BYTES_BUFFERING: 100000000
       CONTROL_CENTER_STREAMS_CONSUMER_REQUEST_TIMEOUT_MS: "960032"
