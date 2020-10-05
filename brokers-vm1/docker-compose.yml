@@ -123,7 +123,7 @@ services:
       CONTROL_CENTER_STREAMS_CONSUMER_REQUEST_TIMEOUT_MS: "960032"
       CONTROL_CENTER_REPLICATION_FACTOR: 6
       
-      CONTROL_CENTER_KSQL_VERIZON_URL: https://ksqldb-server:8089
+      CONTROL_CENTER_KSQL_VERIZON_URL: https://${HOST_NAME_1}:8089
       # Access ksqlDB server from a browser on your localhost
       CONTROL_CENTER_KSQL_VERIZON_ADVERTISED_URL: https://localhost:8089
       # HTTP to Control Center UI 
@@ -158,9 +158,6 @@ services:
     volumes:
      - ${LOCAL_CERTS_LOCATION}:/etc/kafka/secrets
     restart: always
-    healthcheck:
-      # healthcheck is currently incompatible with RBAC
-      disable: true
     environment:
       CUB_CLASSPATH: '/usr/share/java/ksqldb-server/*:/usr/share/java/cp-base-new/*'
       KSQL_LOG4J_ROOT_LOGLEVEL: INFO
@@ -173,20 +170,17 @@ services:
       # For Demo purposes: improve resource utilization and avoid timeouts
       KSQL_KSQL_STREAMS_NUM_STREAM_THREADS: 1
 
-      KSQL_LOG4J_OPTS: "-Dlog4j.configuration=file:/tmp/helper/log4j-secure.properties"
       KSQL_KSQL_LOGGING_PROCESSING_TOPIC_REPLICATION_FACTOR: 2
       KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: 'true'
       KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: 'true'
 
       KSQL_PRODUCER_ENABLE_IDEMPOTENCE: 'true'
 
-      KSQL_BOOTSTRAP_SERVERS: ${HOST_NAME_1}:19093,${HOST_NAME_1}:29093,${HOST_NAME_2}:19093,${HOST_NAME_2}:29093,${HOST_NAME_3}:19093,${HOST_NAME_3}:29093,${HOST_NAME_4}:19093,${HOST_NAME_4}:29093
+      KSQL_BOOTSTRAP_SERVERS: ${HOST_NAME_1}:19093
       KSQL_HOST_NAME: ${HOST_NAME_1}
       KSQL_LISTENERS: https://0.0.0.0:8089
       KSQL_CACHE_MAX_BYTES_BUFFERING: 0
       
-      KSQL_KSQL_SECURITY_EXTENSION_CLASS: io.confluent.ksql.security.KsqlConfluentSecurityExtension
-
       # Authenticate to brokers
       KSQL_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
       KSQL_SSL_TRUSTSTORE_PASSWORD: confluent
@@ -194,4 +188,5 @@ services:
       KSQL_SSL_KEYSTORE_PASSWORD: confluent
       KSQL_SSL_KEY_PASSWORD: confluent
       KSQL_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
+      KSQL_SECURITY_PROTOCOL: SSL
       
