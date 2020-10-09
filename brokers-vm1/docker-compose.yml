@@ -101,7 +101,6 @@ services:
     image: confluentinc/cp-ksqldb-server:latest
     network_mode: host
     depends_on:
-      - control-center
       - kafka-1
       - kafka-2
     volumes:
