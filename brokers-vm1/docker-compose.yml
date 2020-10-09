@@ -97,57 +97,6 @@ services:
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "    
       KAFKA_SECURITY_PROTOCOL: SSL
       
-      
-  control-center:
-    image: confluentinc/cp-enterprise-control-center:latest
-    network_mode: host
-    volumes:
-     - ${LOCAL_CERTS_LOCATION}:/etc/kafka/secrets
-    environment:
-      # CUB CLASSPATH
-      CUB_CLASSPATH: '/etc/confluent/docker/docker-utils.jar:/usr/share/java/confluent-control-center/*:/usr/share/java/rest-utils/*:/usr/share/java/confluent-common/*'
-      # CUB_CLASSPATH: '/etc/confluent/docker/docker-utils.jar:/usr/share/java/confluent-control-center/*'
-
-      # general settings
-      CONTROL_CENTER_BOOTSTRAP_SERVERS: ${HOST_NAME_1}:19093,${HOST_NAME_1}:29093,${HOST_NAME_2}:19093,${HOST_NAME_2}:29093,${HOST_NAME_3}:19093,${HOST_NAME_3}:29093,${HOST_NAME_4}:19093,${HOST_NAME_4}:29093
-      
-      CONTROL_CENTER_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
-      CONTROL_CENTER_SSL_KEYSTORE_PASSWORD: confluent
-      CONTROL_CENTER_SSL_KEY_PASSWORD: confluent
-      CONTROL_CENTER_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
-      CONTROL_CENTER_SSL_TRUSTSTORE_PASSWORD: confluent
-      CONTROL_CENTER_SECURITY_PROTOCOL: SSL      
-     
-      # Amount of heap to use for internal caches. Increase for better throughput
-      CONTROL_CENTER_STREAMS_CACHE_MAX_BYTES_BUFFERING: 100000000
-      CONTROL_CENTER_STREAMS_CONSUMER_REQUEST_TIMEOUT_MS: "960032"
-      CONTROL_CENTER_REPLICATION_FACTOR: 6
-      
-      CONTROL_CENTER_KSQL_VERIZON_URL: https://${HOST_NAME_1}:8089
-      # Access ksqlDB server from a browser on your localhost
-      CONTROL_CENTER_KSQL_VERIZON_ADVERTISED_URL: https://localhost:8089
-      # HTTP to Control Center UI 
-      # Amount of heap to use for internal caches. Increase for better throughput
-
-      CONTROL_CENTER_STREAMS_NUM_STREAM_THREADS: 1
-      CONTROL_CENTER_STREAMS_SECURITY_PROTOCOL: SSL
-      CONTROL_CENTER_STREAMS_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
-      CONTROL_CENTER_STREAMS_SSL_TRUSTSTORE_PASSWORD: confluent
-      CONTROL_CENTER_STREAMS_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
-      CONTROL_CENTER_STREAMS_SSL_KEYSTORE_PASSWORD: confluent
-      CONTROL_CENTER_STREAMS_SSL_KEY_PASSWORD: confluent
-      CONTROL_CENTER_STREAMS_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: "HTTPS"
-
-      # HTTP and HTTPS to Control Center UI 
-      CONTROL_CENTER_REST_LISTENERS: https://0.0.0.0:9022
-      CONTROL_CENTER_REST_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.truststore.jks
-      CONTROL_CENTER_REST_SSL_TRUSTSTORE_PASSWORD: confluent
-      CONTROL_CENTER_REST_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.${HOST_NAME_1}.keystore.jks
-      CONTROL_CENTER_REST_SSL_KEYSTORE_PASSWORD: confluent
-      CONTROL_CENTER_REST_SSL_KEY_PASSWORD: confluent
-      CONTROL_CENTER_SSL_CIPHER_SUITES: "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"
-      PORT: 9022
-      
   ksqldb-server:
     image: confluentinc/cp-ksqldb-server:latest
     network_mode: host
