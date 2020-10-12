@@ -3,7 +3,7 @@ version: '2'
 services:
 
   zookeeper-1:
-    image: confluentinc/cp-zookeeper:latest
+    image: confluentinc/cp-zookeeper:6.0.0
     volumes:
      - ${LOCAL_CERTS_LOCATION}:/etc/kafka/secrets
     environment:
